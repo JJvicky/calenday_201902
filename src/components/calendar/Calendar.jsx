@@ -268,11 +268,11 @@ class Calendar extends Component {
   }
   //點擊日期
   toggleItem = (e) => {
-   const id = e.currentTarget.getAttribute("id");
+   const date = e.currentTarget.getAttribute("data-date");
     this.setState({
-      toggleId: id
+      toggleId: date
     },()=>{
-      console.log(this.state.new_month[id]);
+      console.log(this.state.new_month[date]);
     })
   }
   //月份向右箭頭
@@ -376,7 +376,6 @@ class Calendar extends Component {
   switch = ()=>{
     this.setState({
       calendarMode : !this.state.calendarMode,
-      toggleId : -1
     })
   }
   //加入新資料

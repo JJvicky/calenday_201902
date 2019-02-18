@@ -92,12 +92,12 @@ class DatePrice extends Component {
                             <tr>
                             {this.props.prevEmpty.map((item,index)=>{
                                     return(
-                                      <td className= {clMode ? "empty":"disable"} key={index+100}></td>
+                                      <td className= {clMode ? "empty":"disable"} key={index} data-date={item.date}></td>
                                     )
                                 })}
                             {MonthArray.map((item, index) => {
                                // const Index = this.props.prevEmpty.length+index;
-                                const toggleId = this.props.toggleId==index? "date-active":'' ;
+                                const toggleId = this.props.toggleId==item.date? "date-active":'' ;
                                 //const inPage = (this.props.pageIndex == Math.ceil(index/this.props.countPerPage)) ? '':'disable';
                                 return (
                                         <td id={index} className={`${toggleId}`+' '+this.inPage(index+1) } onClick={item.date? this.props.toggleItem:null} key={index} data-date={item.date}>
