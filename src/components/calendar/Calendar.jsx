@@ -4,6 +4,7 @@ import MonthTitle from './MonthTitle.jsx';
 import PageNumber from './PageNumber.jsx'
 import '../../Style/components.scss';
 import '../../Style/reset.scss';
+import PropTypes from 'prop-types'
 // import { configure } from '@storybook/react';
 // import axios from 'axios';
 // import { AxiosProvider, Request, Get, Delete, Head, Post, Put, Patch, withAxios } from 'react-axios'
@@ -27,6 +28,23 @@ function Weekday() {
 }
 
 class Calendar extends Component {
+  static propTypes = {
+    init: PropTypes.string,
+    init: PropTypes.array,
+    new_month:PropTypes.array,  //顯示當月份all data 
+    prevEmpty: PropTypes.array,  //補月份前的灰格
+    afterEmpty: PropTypes.array, //補月份後的灰格
+    monthArray: PropTypes.array,// 抓出所有的月份 2018/01, 2018/02
+    showMonth: PropTypes.array, //顯示三個月份
+    showMonthActive:   PropTypes.number,  // default取三個月份的中間值index=1
+    indexMonth:   PropTypes.number,  //紀錄目前顯示月份在資料裡的index
+    toggleId: PropTypes.string,  //click日期顯示綠色
+    calendarMode : PropTypes.bool,
+    countPerPage :  PropTypes.number,
+    pageNumber : PropTypes.string,
+    pageIndex : PropTypes.number,
+    destroy :  PropTypes.bool,
+  }
   state = {
     init: [],      //Fetch出 data.json 
     new_month: [],  //顯示當月份all data 
@@ -45,7 +63,9 @@ class Calendar extends Component {
   }
   componentDidMount=()=> {
     const data = this.checkDataSource(this.props.dataSource); //判斷data is array or string
-    fetch(data)
+    // console.log('mont',data);
+    if( typeof(data)=='string'){   
+      fetch(data)
       .then(res => res.json())
       .then(result => {
         this.setState({
@@ -54,7 +74,15 @@ class Calendar extends Component {
           this.monthArray();
         })
       })
+    }else if(typeof(data)=='object'){   
+          this.setState({
+      init : data
+    },()=>{
+      this.monthArray();
+    })
+    }
   }
+  
   //檢查初始化年月是否符合格式 (不符合格式則顯示現在的月份)
   checkInitYearMonth = (init)=>{
     const pattern =  new RegExp('^\\d{4}(0[1-9]|1[0-2])$') ;
@@ -68,7 +96,8 @@ class Calendar extends Component {
  }
   //檢查資料來源if array or string
   checkDataSource = (x) =>{
-   if( typeof(x)=='string' || typeof(x)=='array'){
+   // console.log(typeof(x)=='object');
+   if( typeof(x)=='string' || typeof(x)=='object'){
      return x;
    }else{
      alert("資料格式不符合")
@@ -268,11 +297,16 @@ class Calendar extends Component {
   }
   //點擊日期
   toggleItem = (e) => {
+   const listArray = this.state.new_month.filter((item)=>{    //list array
+    return item.price 
+})
+  const MonthArray = this.state.calendarMode ? this.state.new_month : listArray 
+   const id = e.currentTarget.getAttribute("id");
    const date = e.currentTarget.getAttribute("data-date");
     this.setState({
       toggleId: date
     },()=>{
-      console.log(this.state.new_month[date]);
+     console.log(MonthArray[id]);
     })
   }
   //月份向右箭頭

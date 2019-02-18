@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import Calendar from './stories/Calendar.stories';
 import Calendar from './components/calendar/Calendar.jsx';
+//import Calendar from './components/calendar/Calendar-1.jsx'
 
 const dataKeySetting ={
   // 保證出團
@@ -69,7 +70,16 @@ alive = ()=>{
   render() {
     return (
       <div className="App">
-      {this.state.destroy ? '':<Calendar dataSource="./src/json/data4.json"
+      {this.state.destroy ? '':<Calendar 
+        dataSource="./src/json/data4.json"
+    //   dataSource ={ [{
+    //     "guaranteed": false,
+    //     "date": "2018/10/06",
+    //     "price": 76263,
+    //     "availableVancancy": 16,
+    //     "totalVacnacy": 166,
+    //     "status": "預定"
+    // }]}
        initYearMonth="201809"
        ref={this.child}
        dataKeySetting = {dataKeySetting}

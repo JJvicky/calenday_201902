@@ -5,7 +5,7 @@ import App from './App';
 // import Calendar from './components/calendar/Calendar';
 
 
-window.c = ReactDOM.render(
+window.calendar = ReactDOM.render(
 //<App {...initSetting} />, document.getElementById('root'));
 <App 
      />, document.getElementById('root'));
