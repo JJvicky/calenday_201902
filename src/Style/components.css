@@ -1,0 +1,403 @@
+.App {
+  width: 60%;
+  margin: auto;
+}
+
+.calendar {
+  width: 100%;
+  margin: auto;
+}
+
+.month {
+  width: 100%;
+  background-color: #ede9dd;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.month .arrow.prev {
+  left: 0;
+  width: 20px;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  cursor: pointer;
+}
+
+.month .arrow.prev div {
+  width: 7px;
+  height: 0;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  border-style: solid;
+  border-width: 7px 7px 7px 0;
+  border-color: transparent  #e10500 transparent transparent;
+}
+
+.month .arrow.next {
+  right: 0;
+  width: 20px;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  cursor: pointer;
+}
+
+.month .arrow.next div {
+  width: 7px;
+  height: 0;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  border-style: solid;
+  border-width: 7px 0 7px 7px;
+  border-color: transparent transparent transparent #e10500;
+}
+
+.month ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: calc(100% - 40px);
+}
+
+.month ul .sub_month {
+  width: calc(100%/3);
+  line-height: 50px;
+  text-align: center;
+  color: #666;
+  cursor: pointer;
+}
+
+.month ul .active {
+  background-color: white;
+  color: #e10500;
+  border-top: 2.5px solid #ede9dd;
+}
+
+.weekday {
+  width: 100%;
+}
+
+.weekday ul {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 14px;
+  border: 1px solid #f4f4f4;
+}
+
+.weekday ul li {
+  width: calc( 100% / 7);
+  line-height: 30px;
+  font-size: 14px;
+  text-align: center;
+  color: #666;
+  font-weight: bold;
+}
+
+.disable {
+  display: none;
+}
+
+.date-list {
+  width: 100%;
+  font-size: 12px;
+  border-left: 1px solid #f4f4f4;
+}
+
+.date-list .disable {
+  display: none;
+}
+
+.date-list table {
+  width: 100%;
+}
+
+.date-list tr {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.date-list tr td.date-active {
+  border: 2px solid #66bb3c;
+  background: #fff9e3;
+}
+
+.date-list tr td {
+  width: 100%;
+  height: 62px;
+  border: 1px solid #f4f4f4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.date-list tr td:hover {
+  background: #fff9e3;
+  border: 1px solid #66bb3c;
+}
+
+.date-list tr td .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 5px;
+  color: #666;
+  text-align: center;
+}
+
+.date-list tr td .title .num_date {
+  line-height: 16px;
+  padding: 2px 0 0 1px;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.date-list tr td .title .list-weekday {
+  font-size: 16px;
+}
+
+.date-list section.middle {
+  width: 77%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 0 5px 5px;
+  font-size: 14px;
+}
+
+.date-list section.middle div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.date-list section.middle .sell, .date-list section.middle .group {
+  color: #666;
+  margin-right: 30px;
+  line-height: 1.5;
+}
+
+.date-list section.middle .guaranteed {
+  width: 52px;
+  background: #66bb3c;
+  color: white;
+  padding: 0 5px;
+  text-align: center;
+  margin-top: 5px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.date-list section.right {
+  font-size: 16px;
+  padding: 5px;
+}
+
+.date-list section.right .status {
+  color: #fe8400;
+  text-align: right;
+  line-height: 1.5;
+}
+
+.date-list section.right .price {
+  color: #e10500;
+}
+
+.date-calendar {
+  width: 100%;
+  font-size: 12px;
+  border-left: 1px solid #f4f4f4;
+}
+
+.date-calendar .disable {
+  display: none;
+}
+
+.date-calendar table {
+  width: 100%;
+}
+
+.date-calendar tr {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.date-calendar tr td.date-active {
+  border: 2px solid #66bb3c;
+  background: #fff9e3;
+}
+
+.date-calendar tr td {
+  position: relative;
+  width: calc(100% / 7);
+  height: 90px;
+  border-right: 1px solid #f4f4f4;
+  border-bottom: 1px solid #f4f4f4;
+  border-left: 1px solid transparent;
+  border-top: 1px solid transparent;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.date-calendar tr td:hover {
+  background: #fff9e3;
+}
+
+.date-calendar tr td:empty {
+  background: #f8f8f8;
+  border-right: none;
+}
+
+.date-calendar tr td .title {
+  text-align: left;
+  color: #666;
+}
+
+.date-calendar tr td .title .num_date {
+  padding: 2px 0 0 1px;
+  margin-bottom: 5px;
+}
+
+.date-calendar section.middle div {
+  margin-bottom: 2px;
+}
+
+.date-calendar section.middle .sell, .date-calendar section.middle .group {
+  color: #666;
+}
+
+.date-calendar section.middle .guaranteed {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 52px;
+  background: #fe8400;
+  color: white;
+  width: 50%;
+  padding: 0 3px;
+  text-align: center;
+  line-height: 20px;
+}
+
+.date-calendar section.middle .status {
+  text-align: left;
+  line-height: 1.5;
+}
+
+.date-calendar section.middle .status:register {
+  color: #24a07c;
+}
+
+.date-calendar section.middle .status:waiting {
+  color: #24a07c;
+}
+
+.date-calendar section.middle .status:reserve {
+  color: #24a07c;
+}
+
+.date-calendar section.middle .status:deadline {
+  color: #ff7800;
+}
+
+.date-calendar section.middle .status:full {
+  color: #ff7800;
+}
+
+.date-calendar section.middle .status:closed {
+  color: #ff7800;
+}
+
+.date-calendar section.right {
+  margin-top: 1px;
+}
+
+.date-calendar section.right .price {
+  color: #e10500;
+}
+
+.status.register {
+  color: #24a07c;
+}
+
+.status.waiting {
+  color: #24a07c;
+}
+
+.status.reserve {
+  color: #24a07c;
+}
+
+.status.deadline {
+  color: #ff7800;
+}
+
+.status.full {
+  color: #ff7800;
+}
+
+.status.closed {
+  color: #ff7800;
+}
+/*# sourceMappingURL=components.css.map */
